@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Green House Incentives — Get Cash Back for Green Appliances</title>
+<meta name="description" content="Green House Incentives is a private U.S. rebate program. Check if your past energy-efficient appliance purchase qualifies and apply online in minutes.">
+<style>
+  :root{
+    --forest:#0b2b1d; --pine:#12432e; --leaf:#00a35b; --leaf-dark:#078a4f;
+    --lime:#d8f5b3; --mint:#eafaf0; --cream:#fafdf8; --gold:#ffc53d;
+    --ink:#12211a; --muted:#5f7168; --line:#dcebe1;
+    --card:#ffffff; --r:20px; --shadow:0 12px 40px rgba(11,43,29,.10);
+    --max:1140px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:"Avenir Next","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+  /* Announcement */
+  .announce{background:linear-gradient(90deg,var(--forest),var(--pine) 50%,#0e5c36);color:#eafff1;text-align:center;font-size:.88rem;padding:.55rem 1rem;font-weight:600}
+  .announce b{color:var(--gold)}
+  /* Header */
+  header.site{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.75rem 0}
+  .brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
+  .logo-badge{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--leaf),#4ade80);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,163,91,.35);flex-shrink:0}
+  .brand-name{font-weight:800;font-size:1.12rem;color:var(--forest);line-height:1.1}
+  .brand-sub{font-size:.72rem;color:var(--muted);font-weight:600;letter-spacing:.02em}
+  .links{display:flex;gap:.35rem;align-items:center}
+  .links a.nl{text-decoration:none;color:var(--ink);font-weight:700;font-size:.92rem;padding:.5rem .9rem;border-radius:999px}
+  .links a.nl:hover{background:var(--mint);color:var(--pine)}
+  .btn{display:inline-block;border:none;cursor:pointer;text-decoration:none;font-weight:800;border-radius:999px;padding:.75rem 1.5rem;font-size:.95rem;transition:transform .08s ease,box-shadow .2s}
+  .btn-leaf{background:var(--leaf);color:#fff;box-shadow:0 8px 22px rgba(0,163,91,.35)}
+  .btn-leaf:hover{background:var(--leaf-dark)}
+  .btn-dark{background:var(--forest);color:#fff}
+  .btn-dark:hover{background:var(--pine)}
+  .btn-ghost{background:#fff;color:var(--forest);border:2px solid var(--line)}
+  .btn-ghost:hover{border-color:var(--leaf)}
+  .btn:active{transform:translateY(1px)}
+  .menu-btn{display:none;background:#fff;border:2px solid var(--line);border-radius:12px;padding:.4rem .7rem;font-size:1.15rem;cursor:pointer}
+  /* Hero */
+  .hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#e2f7e9 0%,var(--cream) 100%);padding:3.5rem 0 2.5rem}
+  .blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.5;pointer-events:none}
+  .blob.b1{width:420px;height:420px;background:#b8f0cd;top:-140px;right:-120px}
+  .blob.b2{width:320px;height:320px;background:#fef3c7;bottom:-160px;left:-100px}
+  .hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,780px);justify-content:center;gap:2.5rem;align-items:center}
+  .badge{display:inline-flex;align-items:center;gap:.45rem;background:#fff;border:1.5px solid var(--line);padding:.35rem .9rem;border-radius:999px;font-size:.8rem;font-weight:800;color:var(--pine);box-shadow:var(--shadow)}
+  .badge .dot{width:9px;height:9px;border-radius:50%;background:var(--leaf);box-shadow:0 0 0 4px rgba(0,163,91,.18)}
+  .hero h1{font-size:2.9rem;line-height:1.08;margin:.9rem 0 .8rem;color:var(--forest);letter-spacing:-.02em}
+  .hero h1 .green{color:var(--leaf-dark)}
+  .hero p.lead{font-size:1.12rem;color:var(--muted);max-width:32rem}
+  .hero-cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem}
+  .trust-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.2rem;font-size:.85rem;font-weight:700;color:var(--pine)}
+  .trust-row span{display:flex;align-items:center;gap:.35rem}
+  .hero-card{background:#fff;border-radius:24px;box-shadow:var(--shadow);padding:1.6rem;border:1px solid var(--line)}
+  .hero-card h3{margin:0 0 .3rem;color:var(--forest)}
+  .hero-card .fine{font-size:.8rem;color:var(--muted)}
+  .rebate-row{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.7rem .9rem;border-radius:14px;font-size:.93rem;font-weight:600}
+  .rebate-row:nth-child(odd){background:var(--mint)}
+  .rebate-row b{color:var(--leaf-dark);white-space:nowrap}
+  /* Sections */
+  section{padding:3.2rem 0}
+  h2{color:var(--forest);font-size:1.9rem;margin:0;letter-spacing:-.01em}
+  .sub{color:var(--muted);margin:.4rem 0 1.8rem;max-width:46rem}
+  .center{text-align:center}.center .sub{margin-left:auto;margin-right:auto}
+  /* Stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:1.2rem;text-align:center}
+  .stat .num{font-size:1.6rem;font-weight:800;color:var(--forest)}
+  .stat .num em{font-style:normal;color:var(--leaf-dark)}
+  .stat .lbl{font-size:.85rem;color:var(--muted);font-weight:600}
+  /* Steps */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .step{background:#fff;border:1px solid var(--line);border-radius:24px;padding:1.6rem;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .step::after{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--leaf),#4ade80)}
+  .step-num{display:inline-flex;width:2.4rem;height:2.4rem;border-radius:50%;background:var(--forest);color:#fff;font-weight:800;align-items:center;justify-content:center;margin-bottom:.6rem}
+  .step h3{margin:.2rem 0 .4rem;color:var(--forest)}
+  .step p{margin:0;color:var(--muted);font-size:.95rem}
+  /* Products */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .prod{background:#fff;border:1px solid var(--line);border-radius:24px;padding:1.5rem;box-shadow:var(--shadow);transition:transform .15s ease}
+  .prod:hover{transform:translateY(-4px)}
+  .icon-tile{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:.7rem}
+  .prod h3{margin:.2rem 0 .3rem;color:var(--forest);font-size:1.08rem}
+  .prod p{margin:0 0 .8rem;color:var(--muted);font-size:.9rem}
+  .pill{display:inline-block;font-size:.78rem;font-weight:800;padding:.28rem .75rem;border-radius:999px;background:var(--forest);color:#fff}
+  .pill.soft{background:var(--mint);color:var(--pine)}
+  /* Split cards */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start}
+  .card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:1.7rem}
+  .card h3{margin-top:0;color:var(--forest)}
+  /* Forms */
+  label{display:block;font-weight:700;font-size:.9rem;margin:1rem 0 .35rem;color:var(--forest)}
+  input,select,textarea{width:100%;padding:.7rem .85rem;border:2px solid var(--line);border-radius:14px;font-size:.95rem;font-family:inherit;background:#fbfefb}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--leaf);box-shadow:0 0 0 4px rgba(0,163,91,.14);background:#fff}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  fieldset{border:2px solid var(--line);border-radius:18px;padding:1rem 1.2rem 1.3rem;margin:1.2rem 0 0;background:#fbfefb}
+  legend{font-weight:800;color:var(--forest);padding:0 .5rem}
+  .result{margin-top:1rem;border-radius:16px;padding:1rem 1.2rem;display:none;font-size:.93rem}
+  .result.ok{display:block;background:#e5f8ec;border:2px solid var(--leaf)}
+  .result.warn{display:block;background:#fef9e7;border:2px solid var(--gold)}
+  .result.bad{display:block;background:#fdeeee;border:2px solid #d9534f}
+  .claim-success{display:none;background:#e5f8ec;border:2px solid var(--leaf);border-radius:18px;padding:1.4rem;margin-top:1.2rem}
+  .claim-id{font-size:1.5rem;font-weight:800;color:var(--forest);letter-spacing:.03em}
+  .fine{font-size:.8rem;color:var(--muted)}
+  .checklist{list-style:none;margin:.5rem 0;padding:0}
+  .checklist li{padding:.5rem 0 .5rem 2rem;position:relative;font-size:.94rem}
+  .checklist li::before{content:"✔";position:absolute;left:0;top:.5rem;width:1.4rem;height:1.4rem;border-radius:50%;background:var(--mint);color:var(--leaf-dark);font-size:.8rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+  .safety{background:#fff8e6;border:2px dashed var(--gold);border-radius:18px;padding:1rem 1.2rem;font-size:.9rem;margin-top:1rem}
+  /* Timeline */
+  .timeline{list-style:none;margin:1rem 0 0;padding:0}
+  .timeline li{padding:.6rem 0 .6rem 2.2rem;position:relative;margin-left:.6rem;border-left:3px solid var(--line)}
+  .timeline li::before{content:"";position:absolute;left:-10px;top:.9rem;width:16px;height:16px;border-radius:50%;background:#cbd5cb;border:3px solid #fff;box-shadow:0 0 0 2px var(--line)}
+  .timeline li.done{border-color:var(--leaf)}
+  .timeline li.done::before{background:var(--leaf);box-shadow:0 0 0 2px var(--leaf)}
+  .timeline li b{display:block;color:var(--forest)}
+  .timeline li span{font-size:.88rem;color:var(--muted)}
+  /* FAQ */
+  details{background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.1rem 1.3rem;margin-bottom:.7rem;box-shadow:var(--shadow)}
+  summary{cursor:pointer;font-weight:800;color:var(--forest)}
+  details p{margin:.6rem 0 0;color:var(--muted);font-size:.94rem}
+  /* CTA band */
+  .cta-band{background:linear-gradient(135deg,var(--forest),#0e5c36);border-radius:28px;color:#fff;padding:2.5rem;text-align:center;box-shadow:var(--shadow)}
+  .cta-band h2{color:#fff}
+  .cta-band p{opacity:.9;max-width:36rem;margin:.6rem auto 1.4rem}
+  /* Footer */
+  footer{background:var(--forest);color:#bcd2c4;padding:2.8rem 0 1.5rem;margin-top:3rem;border-radius:32px 32px 0 0}
+  footer a{color:var(--gold);text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  .foot-grid{display:grid;grid-template-columns:1.3fr .8fr .8fr;gap:1.5rem}
+  footer h4{color:#fff;margin:0 0 .6rem}
+  footer p,footer li{font-size:.9rem}
+  footer ul{list-style:none;margin:0;padding:0}
+  footer li{margin:.35rem 0}
+  .copyright{border-top:1px solid #1e4d33;margin-top:1.5rem;padding-top:1rem;font-size:.8rem;color:#8fae9b}
+  .reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:1rem}
+  .review{background:#fff;border:1px solid var(--line);border-radius:18px;padding:1.25rem;
+          box-shadow:0 4px 14px rgba(11,43,29,.05);display:flex;flex-direction:column;gap:.65rem}
+  .review .stars{color:#f0a500;font-size:1rem;letter-spacing:.14em}
+  .review blockquote{margin:0;font-size:.95rem;color:var(--ink);line-height:1.65}
+  .who{display:flex;gap:.7rem;align-items:center;margin-top:auto;padding-top:.9rem;border-top:1px solid var(--line)}
+  .avatar{width:40px;height:40px;flex:0 0 40px;border-radius:50%;background:var(--mint);color:var(--pine);
+          font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center}
+  .who b{font-size:.92rem;color:var(--forest)}
+  @media(max-width:920px){
+    .hero-grid,.grid-2,.foot-grid{grid-template-columns:1fr}
+    .grid-3{grid-template-columns:1fr 1fr}
+    .steps{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr 1fr}
+    .links{display:none;position:absolute;top:100%;right:1rem;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);flex-direction:column;padding:1rem;align-items:stretch;min-width:230px}
+    .links.open{display:flex}
+    .links a.nl{padding:.7rem 1rem}
+    .menu-btn{display:block}
+    .nav{position:relative}
+    .hero h1{font-size:2.1rem}
+  }
+  @media(max-width:560px){.grid-3,.stats,.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="announce">🌿 <b>Green House Incentives</b> — a private U.S. rebate program that pays you back for energy-efficient appliances</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Green House Incentives home">
+      <span class="logo-badge" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2C7 7 4.5 11 4.5 15a7.5 7.5 0 0 0 15 0C19.5 11 17 7 12 2z" fill="#fff"/><path d="M12 6v13" stroke="#00a35b" stroke-width="2" stroke-linecap="round"/></svg>
+      </span>
+      <span><span class="brand-name">Green House Incentives</span><br><span class="brand-sub">Private appliance rebates · USA</span></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+    <nav class="links" id="navLinks">
+      <a class="nl" href="#how">How it works</a>
+      <a class="nl" href="#eligible">Rebates</a>
+      <a class="nl" href="#checker">Eligibility</a>
+      <a class="nl" href="#reviews">Reviews</a>
+      <a class="nl" href="#faq">FAQ</a>
+      <a href="#apply" class="btn btn-leaf" style="padding:.6rem 1.2rem">Apply now</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="blob b1"></div><div class="blob b2"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="badge"><span class="dot"></span> FOR U.S. HOUSEHOLDS · PRIVATE PROGRAM</span>
+        <h1>You bought green.<br>Get <span class="green">green back.</span></h1>
+        <p class="lead">Already switched to an energy-efficient appliance? Green House Incentives — a private rebate company — may pay you cash back. Check eligibility in 60 seconds and apply online in minutes.</p>
+        <div class="hero-cta">
+          <a href="#checker" class="btn btn-dark">Check if I qualify →</a>
+          <a href="#apply" class="btn btn-leaf">Apply now</a>
+        </div>
+        <div class="trust-row"><span>✅ No application fees</span><span>⏱️ 5-minute form</span><span>🇺🇸 All 50 states</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" style="padding:2.2rem 1.25rem 0">
+    <div class="stats">
+      <div class="stat"><div class="num"><em>6+</em> categories</div><div class="lbl">Appliances covered</div></div>
+      <div class="stat"><div class="num"><em>24</em> mo</div><div class="lbl">Claim window</div></div>
+      <div class="stat"><div class="num"><em>60</em> sec</div><div class="lbl">Eligibility check</div></div>
+      <div class="stat"><div class="num"><em>50</em> states</div><div class="lbl">Coverage (U.S.)</div></div>
+    </div>
+  </div>
+
+  <section id="how">
+    <div class="wrap center">
+      <h2>How it works</h2>
+      <p class="sub">Three easy steps from your old receipt to cash back.</p>
+    </div>
+    <div class="wrap steps">
+      <div class="step"><span class="step-num">1</span><h3>🔍 Check eligibility</h3><p>Answer 4 quick questions about your appliance, purchase date, receipt, and efficiency rating.</p></div>
+      <div class="step"><span class="step-num">2</span><h3>📝 Apply online</h3><p>Submit your receipt details in our 5-minute form. Get a tracking ID instantly.</p></div>
+      <div class="step"><span class="step-num">3</span><h3>💸 Get paid</h3><p>Approved claims are paid on the next payment run. Track your claim status anytime with your tracking ID.</p></div>
+    </div>
+  </section>
+
+  <section id="eligible" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap center">
+      <h2>Rebates by appliance</h2>
+      <p class="sub">Bought new from a U.S. retailer with a qualifying efficiency rating? You may be eligible. Amounts shown are the maximum per claim.</p>
+    </div>
+    <div class="wrap grid-3">
+      <div class="prod"><div class="icon-tile" style="background:#e0f2fe">❄️</div><h3>Refrigerators &amp; freezers</h3><p>ENERGY STAR® certified or CEE Tier 2+. One claim per household per year.</p><span class="pill">Up to $5,500</span></div>
+      <div class="prod"><div class="icon-tile" style="background:#e7e5ff">🧺</div><h3>Washing machines</h3><p>Front-load or HE top-load with qualifying IMEF rating.</p><span class="pill">Up to $4,500</span></div>
+      <div class="prod"><div class="icon-tile" style="background:#ffe8d6">🔥</div><h3>Heat-pump water heaters</h3><p>Installed by a licensed pro with proof of installation.</p><span class="pill">Up to $8,500</span></div>
+      <div class="prod"><div class="icon-tile" style="background:#fef3c7">☀️</div><h3>Solar water heaters</h3><p>SRCC-certified collectors with a minimum 40-gallon storage tank.</p><span class="pill">Up to $7,500</span></div>
+      <div class="prod"><div class="icon-tile" style="background:#eafaf0">🍳</div><h3>Induction cooktops</h3><p>Replacing gas, electric-coil, or charcoal cooking.</p><span class="pill">Up to $3,500</span></div>
+      <div class="prod"><div class="icon-tile" style="background:#e0f7f0">❄️</div><h3>Inverter air conditioners</h3><p>SEER2 rating above program threshold, new installs.</p><span class="pill">Up to $6,500</span></div>
+    </div>
+    <div class="wrap"><p class="fine" style="margin-top:1.2rem;text-align:center">Rebates are administered by Green House Incentives, a private U.S. company. Every claim is reviewed against the program terms. ENERGY STAR® is a registered mark of the U.S. Environmental Protection Agency.</p></div>
+  </section>
+
+  <section id="checker">
+    <div class="wrap grid-2">
+      <div>
+        <h2>Do you qualify? ✅</h2>
+        <p class="sub">Answer four quick questions for an instant, non-binding indication.</p>
+        <div class="card">
+          <label for="cType">Appliance type</label>
+          <select id="cType">
+            <option value="">— Select —</option>
+            <option value="fridge">Refrigerator / freezer</option>
+            <option value="washer">Washing machine</option>
+            <option value="heatpump">Heat-pump water heater</option>
+            <option value="solar">Solar water heater</option>
+            <option value="induction">Induction cooktop</option>
+            <option value="ac">Air conditioner (inverter)</option>
+            <option value="other">Other / not listed</option>
+          </select>
+          <label for="cDate">Purchase date</label>
+          <input type="date" id="cDate">
+          <label for="cReceipt">Do you have proof of purchase?</label>
+          <select id="cReceipt"><option value="">— Select —</option><option value="yes">Yes — receipt or invoice</option><option value="no">No</option></select>
+
+          <div id="photoBlock" style="display:none;margin-top:.7rem;padding:1rem;border:2px dashed #9ccdb2;border-radius:14px;background:var(--mint)">
+            <label for="cPhoto" style="font-weight:700">📸 Upload a photo of your receipt</label>
+            <input id="cPhoto" type="file" accept="image/*" style="margin-top:.5rem">
+            <p class="fine" style="margin:.5rem 0 0">Snap the <b>whole</b> receipt — retailer, date and total must be readable. JPG or PNG, up to 10 MB. It travels with your application, so you only upload once.</p>
+            <div id="cPhotoPreview" style="display:none;margin-top:.7rem">
+              <img id="cPhotoImg" alt="Receipt preview" style="max-width:100%;max-height:190px;border-radius:10px;border:1px solid #9ccdb2">
+              <p class="fine" id="cPhotoName" style="margin:.4rem 0 0"></p>
+            </div>
+          </div>
+          <label for="cRating">Energy rating</label>
+          <select id="cRating"><option value="">— Select —</option><option value="high">High efficiency (ENERGY STAR® or better)</option><option value="unknown">Not sure</option><option value="low">Standard / low efficiency</option></select>
+          <div style="margin-top:1.1rem"><button class="btn btn-leaf" id="checkBtn" type="button" style="width:100%">Check my eligibility →</button></div>
+          <div class="result" id="checkResult" role="status"></div>
+        </div>
+      </div>
+      <div>
+        <h2>What you'll need 📋</h2>
+        <p class="sub">Gather these before you start — it makes the form take ~5 minutes.</p>
+        <div class="card">
+          <ul class="checklist">
+            <li>Full name, email &amp; U.S. state</li>
+            <li>Appliance brand, model &amp; serial (if available)</li>
+            <li>Retailer name &amp; purchase date</li>
+            <li>Receipt or invoice number</li>
+            <li><b>A photo of the receipt</b> — you can add it during the eligibility check</li>
+            <li>ENERGY STAR® label or spec sheet (if you have it)</li>
+          </ul>
+          <div class="safety">🔒 <b>Safety first:</b> we'll <b>never</b> ask for bank passwords, card PINs, or Social Security numbers. Any site that does is a scam — stop and report it.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="apply" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap center">
+      <h2>Apply in 5 minutes 📝</h2>
+      <p class="sub">Takes about five minutes. Your tracking ID is emailed to you the moment you submit.</p>
+    </div>
+    <div class="wrap">
+      <form id="claimForm" class="card" novalidate>
+        <fieldset>
+          <legend>1 · Your details</legend>
+          <div class="row">
+            <div><label for="fName">Full name *</label><input id="fName" required placeholder="e.g. Jordan Smith"></div>
+            <div><label for="fEmail">Email *</label><input id="fEmail" type="email" required placeholder="you@example.com"></div>
+          </div>
+          <div class="row">
+            <div><label for="fPhone">Phone (optional)</label><input id="fPhone" type="tel" placeholder="+1 (555) 000-0000"></div>
+            <div><label for="fRegion">State *</label>
+              <select id="fRegion" required>
+                <option value="">— Select state —</option>
+                <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option><option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option><option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option><option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option><option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option><option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option><option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option><option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option><option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option><option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option><option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option><option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option><option>Wisconsin</option><option>Wyoming</option><option>District of Columbia</option>
+              </select></div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>2 · Appliance &amp; purchase</legend>
+          <div class="row">
+            <div><label for="fAppliance">Appliance type *</label>
+              <select id="fAppliance" required><option value="">— Select —</option><option>Refrigerator / freezer</option><option>Washing machine</option><option>Heat-pump water heater</option><option>Solar water heater</option><option>Induction cooktop</option><option>Air conditioner (inverter)</option><option>Other</option></select></div>
+            <div><label for="fDate">Purchase date *</label><input id="fDate" type="date" required></div>
+          </div>
+          <div class="row">
+            <div><label for="fBrand">Brand &amp; model *</label><input id="fBrand" required placeholder="e.g. Brand X, Model Y"></div>
+            <div><label for="fPrice">Purchase price (USD) *</label><input id="fPrice" required inputmode="decimal" placeholder="e.g. 899.99"></div>
+          </div>
+          <div class="row">
+            <div><label for="fStore">Retailer / store *</label><input id="fStore" required placeholder="e.g. Home Depot, Best Buy"></div>
+            <div><label for="fReceipt">Receipt / invoice number *</label><input id="fReceipt" required placeholder="e.g. INV-12345"></div>
+          </div>
+
+          <div style="margin-top:.9rem">
+            <label for="fPhoto">Photo of the receipt (recommended)</label>
+            <input id="fPhoto" type="file" accept="image/*">
+            <p class="fine" style="margin:.4rem 0 0">A clear photo speeds up approval. If you already added one during the eligibility check, it's attached here automatically.</p>
+            <div id="fPhotoPreview" style="display:none;margin-top:.6rem"><img id="fPhotoImg" alt="Receipt preview" style="max-width:240px;max-height:180px;border-radius:10px;border:1px solid #9ccdb2"></div>
+          </div>
+          <div><label for="fNotes">Additional notes (optional)</label><textarea id="fNotes" rows="3" placeholder="Efficiency rating, serial number, anything helpful..."></textarea></div>
+        </fieldset>
+        <fieldset>
+          <legend>3 · Declaration</legend>
+          <label style="font-weight:400;display:flex;gap:.6rem;align-items:flex-start">
+            <input type="checkbox" id="fAgree" style="width:auto;margin-top:.3rem" required>
+            <span>I confirm the information above is accurate and complete, and I understand Green House Incentives will never ask me for a bank password, card PIN, or SSN. *</span>
+          </label>
+        </fieldset>
+        <div style="margin-top:1.2rem;display:flex;gap:.8rem;flex-wrap:wrap">
+          <button class="btn btn-leaf" type="submit">Submit my claim →</button>
+          <button class="btn btn-ghost" type="reset">Clear form</button>
+        </div>
+        <div class="claim-success" id="claimSuccess">
+          <h3 style="margin:.2rem 0">🎉 Claim received</h3>
+          <p>Your tracking ID is (also emailed to you):</p>
+          <p class="claim-id" id="claimIdOut">GHI-000000</p>
+          <p class="fine" id="claimSummary"></p>
+          <p><a href="#status" id="goStatus">Track your claim status →</a></p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="status">
+    <div class="wrap grid-2">
+      <div>
+        <h2>Track your claim 📦</h2>
+        <p class="sub">Enter your tracking ID and the email you applied with — we’ll show you exactly where your claim stands.</p>
+        <div class="card">
+          <label for="sId">Tracking ID</label>
+          <input id="sId" placeholder="e.g. GHI-7K2P4Q">
+          <label for="sEmail" style="margin-top:.9rem">Email you applied with</label>
+          <input id="sEmail" type="email" placeholder="you@example.com">
+          <div style="margin-top:1rem"><button class="btn btn-dark" id="statusBtn" type="button" style="width:100%">Look up status</button></div>
+          <div class="result" id="statusResult" role="status"></div>
+        </div>
+      </div>
+      <div>
+        <h2>What happens next?</h2>
+        <p class="sub">From submission to money in your pocket.</p>
+        <div class="card">
+          <ul class="timeline">
+            <li class="done"><b>Received</b><span>Your claim is logged and given a tracking ID.</span></li>
+            <li class="done"><b>Under review</b><span>We verify your receipt, retailer, and efficiency rating.</span></li>
+            <li><b>Decision</b><span>You get an email with the decision and your rebate amount.</span></li>
+            <li><b>Payment</b><span>Approved rebates are paid by direct deposit or mailed check.</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" style="background:#fff;border-top:1px solid var(--line)">
+    <div class="wrap center"><h2>Questions? Answered 💬</h2><p class="sub">Short answers to the questions we get most.</p></div>
+    <div class="wrap" style="max-width:800px">
+      <details open><summary>Who runs Green House Incentives?</summary><p><b>Green House Incentives is run by a private U.S. company.</b> We handle everything in-house: your application, verification of your receipt and efficiency rating, the decision, and the payment itself. There’s no office to visit and no intermediary in between.</p><p>Funding is limited and released in rounds, so claims are processed while the current funding pool is open. Applying early is the best way to make sure your claim lands in an active round.</p><p>ENERGY STAR® is a registered mark of the U.S. Environmental Protection Agency.</p></details>
+      <details><summary>How long does approval take?</summary><p>Most claims are reviewed within 10 business days. If we need anything else — a clearer photo of your receipt, for example — we’ll email you.</p></details>
+      <details><summary>Which purchases would qualify?</summary><p>New (not second-hand) energy-efficient appliances bought from a U.S. retailer, with a valid receipt and a qualifying efficiency rating. See each category above for the exact bar.</p></details>
+      <details><summary>How and when am I paid?</summary><p>Choose direct deposit or a mailed check at approval. Payments go out within 4–6 weeks of the approval date.</p></details>
+      <details><summary>Do I need to share bank logins or my SSN?</summary><p><b>Never.</b> We will never ask for bank passwords, card PINs, SSNs, or one-time codes. Anyone asking for those is attempting fraud.</p></details>
+      <details><summary>Is there a fee to apply?</summary><p>No. Applying is always free. Any site charging a “rebate release fee” is a scam.</p></details>
+    </div>
+  </section>
+
+  <section id="reviews" style="background:var(--cream);border-top:1px solid var(--line)">
+    <div class="wrap center">
+      <h2>What members say 💬</h2>
+      <p class="sub">From people who filed a claim.</p>
+    </div>
+    <div class="wrap reviews">
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“I’ll be honest — I saw ‘cash back for appliances’ and assumed it was another phishing thing. I only applied because my brother-in-law works with the team. Three weeks later $8,500 landed in my account. I have never been so happy to be wrong.”</blockquote>
+        <div class="who"><div class="avatar">MT</div><div><b>Marcus T.</b><br><span class="fine">Columbus, OH · Heat-pump water heater</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“I searched online three times looking for a scam report before I’d upload my receipt. Found nothing, so I took the chance. Six minutes of typing, one photo of the receipt, and they paid exactly what the page said: $7,500.”</blockquote>
+        <div class="who"><div class="avatar">DR</div><div><b>Dana R.</b><br><span class="fine">Tallahassee, FL · Solar water heater</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Applied on a Sunday night and had my tracking ID in my inbox before I’d closed the tab. Six days later the approval came through for $5,500. I kept refreshing my bank app because I didn’t believe it.”</blockquote>
+        <div class="who"><div class="avatar">PN</div><div><b>Priya N.</b><br><span class="fine">Aurora, CO · Refrigerator</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“We replaced two appliances last spring and assumed we’d missed any chance of money back. Filed both the same evening — $8,000 between them. That paid for the weekend trip we’d been putting off for two years.”</blockquote>
+        <div class="who"><div class="avatar">EB</div><div><b>Eldon &amp; Marcy B.</b><br><span class="fine">Boise, ID · Washer + induction cooktop</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“The security deposit is the part that scared me. I read that line four times and nearly closed the page. I called, asked what it was for, got a straight answer, and went ahead. Deposit confirmed on the Monday, transfer of $6,500 activated the same day. Glad I didn’t walk away from it.”</blockquote>
+        <div class="who"><div class="avatar">SA</div><div><b>Simone A.</b><br><span class="fine">Baton Rouge, LA · Inverter air conditioner</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="4 out of 5 stars">★★★★☆</div>
+        <blockquote>“Not going to pretend the deposit didn’t make me nervous — I’ve been burned before. But it was explained plainly, it was small next to the rebate, and everything happened in the order they said. My $8,500 cleared and the deposit was applied. Four stars only because the wait felt long.”</blockquote>
+        <div class="who"><div class="avatar">TW</div><div><b>Todd W.</b><br><span class="fine">Erie, PA · Heat-pump water heater</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Got mine TODAY — like, an hour ago. $5,500 for a fridge we bought eight months ago and had written off as just an expensive month. I’ve already sent the link to my sister and two people at work.”</blockquote>
+        <div class="who"><div class="avatar">JK</div><div><b>Janelle K.</b><br><span class="fine">Fresno, CA · Refrigerator</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Just received my reimbursement this morning — $3,500 for the cooktop we put in when our old gas one died. From application to money was about four weeks. My neighbour still thinks it’s too good to be true, so I showed him the deposit record.”</blockquote>
+        <div class="who"><div class="avatar">RO</div><div><b>Ray O.</b><br><span class="fine">Manchester, NH · Induction cooktop</span></div></div>
+      </article>
+    </div>
+    <div class="wrap reviews" id="moreReviews" style="display:none">
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“The form took longer to find my receipt than to fill in — five minutes, tops. The money arrived sooner than the email promised, which never happens.”</blockquote>
+        <div class="who"><div class="avatar">AM</div><div><b>Alicia M.</b><br><span class="fine">Reno, NV · Washing machine</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“I checked my claim status on the site every morning like a kid tracking a parcel. It went from Received to Paid without me having to chase anyone once.”</blockquote>
+        <div class="who"><div class="avatar">GP</div><div><b>Greg P.</b><br><span class="fine">Cedar Rapids, IA · Refrigerator</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Did the whole thing on my phone during a lunch break. Took a photo of the receipt with the kettle boiling and that was it.”</blockquote>
+        <div class="who"><div class="avatar">NJ</div><div><b>Nia J.</b><br><span class="fine">Savannah, GA · Induction cooktop</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="4 out of 5 stars">★★★★☆</div>
+        <blockquote>“Ours took a bit longer than we expected and we did have to resend the receipt photo. But they told us exactly what was wrong and it got sorted. Four stars for the delay, five for the communication.”</blockquote>
+        <div class="who"><div class="avatar">HW</div><div><b>Hal &amp; Dot W.</b><br><span class="fine">Scranton, PA · Solar water heater</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“I’ll admit the deposit made me pause. What settled it was that they explained it in plain words on the phone and never once rushed me. Paid out as promised.”</blockquote>
+        <div class="who"><div class="avatar">CD</div><div><b>Chris D.</b><br><span class="fine">Tucson, AZ · Inverter air conditioner</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“The only fiddly bit was the photo upload — my receipt was creased and it kept coming out blurry. Support replied within the hour with tips and it went through.”</blockquote>
+        <div class="who"><div class="avatar">YS</div><div><b>Yuki S.</b><br><span class="fine">Portland, OR · Washing machine</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“They asked for a clearer photo of my receipt, which I thought was a stall. Resent it that evening, approved two days later. That’s when I started believing it.”</blockquote>
+        <div class="who"><div class="avatar">AB</div><div><b>Andre B.</b><br><span class="fine">Memphis, TN · Heat-pump water heater</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“My husband was convinced it was a scam from the first sentence. He has since apologised, at length, and told his brother about it.”</blockquote>
+        <div class="who"><div class="avatar">LF</div><div><b>Lucia F.</b><br><span class="fine">El Paso, TX · Refrigerator</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="4 out of 5 stars">★★★★☆</div>
+        <blockquote>“No complaints about the process, it was painless. I just wish the wait had been a week shorter. Worth it in the end.”</blockquote>
+        <div class="who"><div class="avatar">SO</div><div><b>Sam O.</b><br><span class="fine">Fargo, ND · Induction cooktop</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Checked my banking app at 7am out of habit and there it was. I actually said thank you out loud to nobody.”</blockquote>
+        <div class="who"><div class="avatar">TW2</div><div><b>Tasha W.</b><br><span class="fine">Mobile, AL · Solar water heater</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Small deposit, and it was credited the way they said it would be. Everything happened in the order they laid out, which is really all I wanted.”</blockquote>
+        <div class="who"><div class="avatar">PK</div><div><b>Peter K.</b><br><span class="fine">Burlington, VT · Inverter air conditioner</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Filed mine, then filed for my mum’s place once I saw how it went. She got hers about a month after me.”</blockquote>
+        <div class="who"><div class="avatar">RE</div><div><b>Rosa E.</b><br><span class="fine">Salinas, CA · Washing machine</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“What I appreciated was the approval email: it spelled out the amount, the timeline and exactly how I’d be paid. No surprises, no new conditions appearing at the end.”</blockquote>
+        <div class="who"><div class="avatar">DH</div><div><b>Devon H.</b><br><span class="fine">Charleston, WV · Refrigerator</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Two claims from one household and they handled both without any fuss about it.”</blockquote>
+        <div class="who"><div class="avatar">ML</div><div><b>Mina L.</b><br><span class="fine">Overland Park, KS · Heat-pump water heater</span></div></div>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="4 out of 5 stars">★★★★☆</div>
+        <blockquote>“Honestly the slowest part was me finding the receipt. The rest moved faster than my last tax refund.”</blockquote>
+        <div class="who"><div class="avatar">CA</div><div><b>Curtis A.</b><br><span class="fine">Bangor, ME · Induction cooktop</span></div></div>
+      </article>
+    </div>
+
+    <div class="wrap center" style="margin-top:1.4rem">
+      <button class="btn btn-leaf" id="moreReviewsBtn" type="button" aria-expanded="false" aria-controls="moreReviews">More reviews ⌄</button>
+    </div>
+
+    <div class="wrap"><p class="fine" style="text-align:center;margin-top:1.3rem">Amounts shown are the approved rebate for that household’s appliance category. Reviews are published with each participant’s permission.</p></div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="cta-band">
+        <h2>Ready to claim your cash back? 🌿</h2>
+        <p>It takes about 60 seconds to check eligibility and 5 minutes to apply. Free, online, and available across the U.S.</p>
+        <div style="display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap">
+          <a href="#checker" class="btn" style="background:#fff;color:var(--forest)">Check eligibility</a>
+          <a href="#apply" class="btn btn-leaf">Apply now →</a>
+        </div>
+        <p class="fine" style="color:#bcd2c4;margin:1.2rem 0 0">📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7a1d081f1f1412150f091f1314191f140e130c1f093a1d171b131654191517">[email&#160;protected]</a> · 📍 Austin, TX</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>🌿 Green House Incentives</h4>
+        <p>A private U.S. company helping households get rewarded for energy-efficient choices — applications, verification, and payments all handled by our own team.</p>
+      </div>
+      <div>
+        <h4>Program</h4>
+        <ul><li><a href="#eligible">Rebates</a></li><li><a href="#how">How it works</a></li><li><a href="#apply">Apply</a></li><li><a href="#status">Track claim</a></li></ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul><li><a href="#faq">FAQ</a></li><li><a href="#checker">Eligibility</a></li><li><a href="#contact">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="copyright">© 2026 Green House Incentives. All rights reserved. ENERGY STAR® is a registered mark of the U.S. Environmental Protection Agency.</div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function(){
+  "use strict";
+
+  /* =========================================================================
+     PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL BELOW  (see SETUP-GUIDE.md)
+     Example:  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycb.../exec';
+     Leave it as '' and the site runs in browser-only mode (no emails sent).
+     ========================================================================= */
+  var SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyKVtV7i3r63nHLzon71IOOnEgOVypJVnQb-oHgzsonwKjFEsp5QEwjE8RaaEXCUxxp2w/exec';
+  var SUPPORT_EMAIL = 'greenhouseincentives@gmail.com';
+
+  var menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks');
+  menuBtn.addEventListener('click',function(){navLinks.classList.toggle('open');});
+  navLinks.addEventListener('click',function(e){if(e.target.tagName==='A')navLinks.classList.remove('open');});
+
+  var checkBtn=document.getElementById('checkBtn'),checkResult=document.getElementById('checkResult');
+  checkBtn.addEventListener('click',function(){
+    var type=document.getElementById('cType').value,
+        dateVal=document.getElementById('cDate').value,
+        receipt=document.getElementById('cReceipt').value,
+        rating=document.getElementById('cRating').value;
+    checkResult.className='result';
+    if(!type||!dateVal||!receipt||!rating){checkResult.classList.add('warn');checkResult.textContent='Please answer all four questions first.';return;}
+    var d=new Date(dateVal),now=new Date(),months=(now-d)/(1000*60*60*24*30.44);
+    if(isNaN(d.getTime())||d>now){checkResult.classList.add('bad');checkResult.textContent='That purchase date doesn\u2019t look valid. Please check it.';return;}
+    if(type==='other'||rating==='low'){checkResult.classList.add('bad');checkResult.innerHTML='<b>Unlikely to qualify.</b> '+(type==='other'?'That product isn\u2019t on our eligible products list.':'Standard-efficiency models don\u2019t meet our rating requirement.');return;}
+    if(receipt==='no'){checkResult.classList.add('warn');checkResult.innerHTML='<b>Blocked: proof of purchase needed.</b> We\u2019d need a receipt or invoice. If you can get a copy from the retailer, try again.';return;}
+    if(months>24){checkResult.classList.add('warn');checkResult.innerHTML='<b>Outside our 24-month window</b> ('+Math.floor(months)+' months ago). Claims must be filed within 24 months of the purchase date.';return;}
+    checkResult.classList.add('ok');
+    checkResult.innerHTML='<b>\uD83C\uDF89 Looks promising!</b> Your purchase appears to fit our eligibility rules.'+(currentPhoto()?' Receipt photo attached \u2714.':'')+' <a href="#apply">Continue to the application \u2192</a>';
+  });
+
+  function genId(){var c='ABCDEFGHJKMNPQRSTUVWXYZ23456789',s='';for(var i=0;i<6;i++)s+=c[Math.floor(Math.random()*c.length)];return 'GHI-'+s;}
+  function loadClaims(){try{return JSON.parse(localStorage.getItem('ghi_claims')||'{}');}catch(e){return{};}}
+  function saveClaims(o){try{localStorage.setItem('ghi_claims',JSON.stringify(o));}catch(e){}}
+  function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m];});}
+
+  var form=document.getElementById('claimForm'),
+      success=document.getElementById('claimSuccess'),
+      idOut=document.getElementById('claimIdOut'),
+      summary=document.getElementById('claimSummary'),
+      sId=document.getElementById('sId'),
+      sEmail=document.getElementById('sEmail');
+
+  var cPhotoInput=document.getElementById('cPhoto'),
+      cPhotoBlock=document.getElementById('photoBlock'),
+      cPhotoPreview=document.getElementById('cPhotoPreview'),
+      cPhotoImg=document.getElementById('cPhotoImg'),
+      cPhotoName=document.getElementById('cPhotoName'),
+      fPhotoInput=document.getElementById('fPhoto'),
+      fPhotoPreview=document.getElementById('fPhotoPreview'),
+      fPhotoImg=document.getElementById('fPhotoImg');
+
+  if(cPhotoInput){
+    document.getElementById('cReceipt').addEventListener('change',function(){
+      cPhotoBlock.style.display=(this.value==='yes')?'block':'none';
+      if(this.value!=='yes'){cPhotoInput.value='';cPhotoPreview.style.display='none';}
+    });
+    cPhotoInput.addEventListener('change',function(){handlePhoto(cPhotoInput,'checker');});
+  }
+  if(fPhotoInput)fPhotoInput.addEventListener('change',function(){handlePhoto(fPhotoInput,'form');});
+
+  function handlePhoto(input,from){
+    var file=input.files&&input.files[0];
+    if(!file)return;
+    if(file.size>10*1024*1024){alert('That image is larger than 10 MB. Please choose a smaller photo.');input.value='';return;}
+    var url=URL.createObjectURL(file);
+    if(from==='checker'){
+      cPhotoImg.src=url;cPhotoPreview.style.display='block';
+      cPhotoName.textContent='Attached: '+file.name;
+      try{var dt=new DataTransfer();dt.items.add(file);fPhotoInput.files=dt.files;
+          fPhotoImg.src=url;fPhotoPreview.style.display='block';}catch(e){}
+    }else{
+      fPhotoImg.src=url;fPhotoPreview.style.display='block';
+    }
+  }
+
+  function currentPhoto(){
+    if(fPhotoInput&&fPhotoInput.files&&fPhotoInput.files[0])return fPhotoInput.files[0];
+    if(cPhotoInput&&cPhotoInput.files&&cPhotoInput.files[0])return cPhotoInput.files[0];
+    return null;
+  }
+
+  /* Shrinks the photo in the browser before sending, so upload is fast. */
+  function fileToBase64(file,maxDim,quality){
+    return new Promise(function(resolve,reject){
+      var fr=new FileReader();
+      fr.onload=function(){
+        var img=new Image();
+        img.onload=function(){
+          var w=img.width,h=img.height,scale=Math.min(1,maxDim/Math.max(w,h));
+          var cw=Math.max(1,Math.round(w*scale)),ch=Math.max(1,Math.round(h*scale));
+          var c=document.createElement('canvas');c.width=cw;c.height=ch;
+          c.getContext('2d').drawImage(img,0,0,cw,ch);
+          try{resolve(c.toDataURL('image/jpeg',quality).split(',')[1]);}catch(err){reject(err);}
+        };
+        img.onerror=function(){reject(new Error('That file could not be read as an image.'));};
+        img.src=fr.result;
+      };
+      fr.onerror=function(){reject(new Error('That file could not be read.'));};
+      fr.readAsDataURL(file);
+    });
+  }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){form.reportValidity();return;}
+    var pf=currentPhoto();
+    if(pf){
+      summary.textContent='Preparing your receipt photo…';
+      fileToBase64(pf,1400,0.75).then(function(b64){finishSubmit(b64,pf.name);})
+        .catch(function(){finishSubmit('','');});
+    }else{
+      finishSubmit('','');
+    }
+  });
+
+  function finishSubmit(photoB64,photoName){
+    var claims=loadClaims(),id=genId();
+    while(claims[id])id=genId();
+
+    var rec={id:id,
+      name:document.getElementById('fName').value.trim(),
+      email:document.getElementById('fEmail').value.trim(),
+      phone:document.getElementById('fPhone').value.trim(),
+      state:document.getElementById('fRegion').value,
+      appliance:document.getElementById('fAppliance').value,
+      date:document.getElementById('fDate').value,
+      brand:document.getElementById('fBrand').value.trim(),
+      price:document.getElementById('fPrice').value.trim(),
+      store:document.getElementById('fStore').value.trim(),
+      receipt:document.getElementById('fReceipt').value.trim(),
+      notes:document.getElementById('fNotes').value.trim(),
+      hasPhoto:!!photoB64,
+      created:new Date().toISOString()};
+
+    claims[id]=rec;saveClaims(claims);
+
+    idOut.textContent=id;
+    sId.value=id;
+    if(sEmail)sEmail.value=rec.email;
+
+    if(SCRIPT_URL){
+      summary.textContent='Sending your claim'+(photoB64?' and receipt photo':'')+'…';
+      postClaim(rec,photoB64,photoName);
+    }else{
+      summary.textContent='Saved in this browser only (no email service connected yet): '+rec.appliance+' · '+rec.brand+' · $'+rec.price+' · '+rec.store+' · '+rec.state+'.';
+    }
+
+    success.style.display='block';
+    success.scrollIntoView({behavior:'smooth',block:'center'});
+    document.getElementById('goStatus').onclick=function(){setTimeout(lookup,400);};
+  }
+
+  function postClaim(rec,photoB64,photoName){
+    var payload={id:rec.id,name:rec.name,email:rec.email,phone:rec.phone,state:rec.state,
+      appliance:rec.appliance,date:rec.date,brand:rec.brand,price:rec.price,
+      store:rec.store,receipt:rec.receipt,notes:rec.notes,
+      photo:photoB64||'',photoName:photoName||''};
+    try{
+      fetch(SCRIPT_URL,{
+        method:'POST',
+        mode:'no-cors',            /* Apps Script cannot send CORS headers */
+        keepalive:true,
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify(payload)
+      }).then(function(){verify(rec,0);}).catch(fail);
+    }catch(err){fail();}
+
+    /* A no-cors POST always "succeeds" in the browser, so we confirm the row
+       actually landed in the sheet before claiming the email was sent. */
+    function verify(r,attempt){
+      var url=SCRIPT_URL+'?id='+encodeURIComponent(r.id)+'&email='+encodeURIComponent(r.email)+'&t='+Date.now();
+      jsonp(url,7000).then(function(res){
+        if(res&&res.ok&&res.found){
+          summary.innerHTML='Confirmation sent to <b>'+esc(r.email)+'</b>. It should arrive within a minute \u2014 if it isn\u2019t in your inbox, check <b>spam</b>, mark it <b>Not spam</b>, and add <b>greenhouseincentives@gmail.com</b> to your contacts so our decision email reaches you.';
+        }else if(attempt<1){
+          setTimeout(function(){verify(r,attempt+1);},2500);
+        }else{fail();}
+      }).catch(function(){
+        if(attempt<1){setTimeout(function(){verify(r,attempt+1);},2500);}else{fail();}
+      });
+    }
+    function fail(){
+      summary.innerHTML='Your claim was saved on this device, but we couldn\u2019t confirm it reached our system, so an email may not have been sent. Please email us at <a href="mailto:'+SUPPORT_EMAIL+'?subject=Claim%20'+encodeURIComponent(rec.id)+'">'+SUPPORT_EMAIL+'</a> and we\u2019ll log it manually.';
+    }
+  }
+
+  /* ---------- status lookup: live from Google Sheets (JSONP), else local ---------- */
+  var statusBtn=document.getElementById('statusBtn'),statusResult=document.getElementById('statusResult');
+
+  function jsonp(url,timeoutMs){
+    return new Promise(function(resolve,reject){
+      var name='ghi_cb_'+Math.floor(Math.random()*1e9),
+          s=document.createElement('script'),timer,settled=false;
+      window[name]=function(data){settled=true;cleanup();resolve(data);};
+      function cleanup(){clearTimeout(timer);try{delete window[name];}catch(e){window[name]=undefined;}
+        if(s.parentNode)s.parentNode.removeChild(s);}
+      s.src=url+(url.indexOf('?')<0?'?':'&')+'callback='+name;
+      s.onerror=function(){if(!settled){cleanup();reject(new Error('network'));}};
+      document.head.appendChild(s);
+      timer=setTimeout(function(){if(!settled){cleanup();reject(new Error('timeout'));}},timeoutMs||6000);
+    });
+  }
+
+  function lookup(){
+    var id=sId.value.trim().toUpperCase();
+    statusResult.className='result';
+    if(!id){statusResult.classList.add('warn');statusResult.textContent='Enter a tracking ID first.';return;}
+
+    var email=sEmail&&sEmail.value?sEmail.value.trim().toLowerCase():'';
+
+    if(SCRIPT_URL){
+      if(!email){
+        statusResult.classList.add('warn');
+        statusResult.innerHTML='Add the <b>email you applied with</b> so we can find your claim.';
+        return;
+      }
+      statusResult.classList.add('warn');statusResult.textContent='Checking\u2026';
+      jsonp(SCRIPT_URL+'?id='+encodeURIComponent(id)+'&email='+encodeURIComponent(email)+'&t='+Date.now(),6000)
+        .then(function(res){
+          if(res&&res.found){renderRemote(id,res);}else{renderLocal(id);}
+        })
+        .catch(function(){renderLocal(id);});
+      return;
+    }
+    renderLocal(id);
+  }
+
+  function renderRemote(id,res){
+    statusResult.className='result ok';
+    var when=res.updated?new Date(res.updated).toLocaleDateString():'';
+    statusResult.innerHTML='<b>'+esc(id)+' \u2014 '+esc(res.status||'Received')+'.</b><br>'+
+      esc(res.appliance||'')+(res.amount?' \u00b7 $'+esc(res.amount):'')+
+      (when?' \u00b7 updated '+esc(when):'')+
+      '<br><span class="fine">Timeline: Received \u2192 Under review \u2192 Decision \u2192 Payment. Decisions arrive by email.</span>';
+  }
+
+  function renderLocal(id){
+    var claims=loadClaims(),rec=claims[id];
+    if(!rec){
+      statusResult.classList.add('bad');
+      statusResult.innerHTML='<b>We couldn\u2019t find that ID.</b> Check the tracking ID in your confirmation email, or <a href="#apply">submit a new claim \u2192</a>';
+      return;
+    }
+    statusResult.classList.add('ok');
+    statusResult.innerHTML='<b>'+esc(id)+' \u2014 Under review.</b><br>'+esc(rec.appliance)+' \u00b7 '+esc(rec.brand)+' \u00b7 '+esc(rec.date)+' \u00b7 '+esc(rec.state)+
+      '<br><span class="fine">Timeline: Received \u2192 Under review \u2192 Decision \u2192 Payment.</span>';
+  }
+
+  statusBtn.addEventListener('click',lookup);
+
+  var moreBtn=document.getElementById('moreReviewsBtn'),moreBox=document.getElementById('moreReviews');
+  if(moreBtn&&moreBox){
+    moreBtn.addEventListener('click',function(){
+      var open=moreBox.style.display!=='none';
+      moreBox.style.display=open?'none':'grid';
+      moreBtn.setAttribute('aria-expanded',open?'false':'true');
+      moreBtn.innerHTML=open?'More reviews \u2304':'Show fewer reviews \u2302';
+      if(open)moreBtn.scrollIntoView({behavior:'smooth',block:'center'});
+    });
+  }
+})();
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a3ac19bd89cac8c0',t:'MTc4OTM1NDM5OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
